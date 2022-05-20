@@ -15,80 +15,67 @@ function LeerDeportistasTerminado(response){
     console.log(response);
 
     for (let i = 0 ; i < response.values.length; i++){
-        
-        let divdeportista = document.createElement("div");
-        divdeportista.className="deportista";
-        divdeportista.setAttribute("onclick", "clickSobreDeportista(" + response.values[i].idsocio + ")");
-        
-            let divimagen = document.createElement("div");
-            divimagen.className="imgfoto";
-        
-                let imgsocio = document.createElement("img");
-                imgsocio.setAttribute("src","imagenes/"+response.values[i].imagen);
-                imgsocio.className="imgfoto";
-                divimagen.append(imgsocio);
-        
-                divdeportista.append(divimagen);
-        
-            let divdescripcion = document.createElement("div");
-            divdescripcion.className = "descripcion";
-        
-                let h3Nombre = document.createElement("h3");
-                h3Nombre.innerHTML = "Nombre: "+response.values[i].nombre;
-                divdescripcion.append(h3Nombre);
 
-                let h3Apellidos = document.createElement("h3");
-                h3Apellidos.innerHTML = "Apellidos: "+response.values[i].apellidos;
-                divdescripcion.append(h3Apellidos);
+        if (response.values[i].estado != "baja")
+        {
         
-          /*      let h3Dni = document.createElement("h3");
-                h3Dni.innerHTML = "DNI: " + response.values[i].dni;
-                divdescripcion.append(h3Dni);
+            let divdeportista = document.createElement("div");
+            divdeportista.className="deportista";
+            divdeportista.setAttribute("onclick", "clickSobreDeportista(" + response.values[i].idsocio + ")");
         
-                let h3Antiguedad = document.createElement("h4");
-                h3Antiguedad.innerHTML = "Antiguedad: " + (parseInt(2022)- parseInt(response.values[i].alta));
-                divdescripcion.append(h3Antiguedad);
+                let divimagen = document.createElement("div");
+                divimagen.className="imgfoto";
         
-                let h4Id = document.createElement("h4");
-                h4Id.innerHTML = "Nº Socio: "+response.values[i].idsocio;
-                divdescripcion.append(h4Id);   
-                            
-                let h4anyo = document.createElement("h4");
-                h4anyo.innerHTML = "Año de Nacimiento: "+response.values[i].nacimiento;
-                divdescripcion.append(h4anyo);*/ 
+                    let imgsocio = document.createElement("img");
+                    imgsocio.setAttribute("src","imagenes/"+response.values[i].imagen);
+                    imgsocio.className="imgfoto";
+                    divimagen.append(imgsocio);
         
-                let h4altura = document.createElement("h4");
-                h4altura.innerHTML = "Altura: "+response.values[i].altura;
-                divdescripcion.append(h4altura);
+                    divdeportista.append(divimagen);
         
-                let h4peso = document.createElement("h4");
-                h4peso.innerHTML = "Peso: "+response.values[i].peso;
-                divdescripcion.append(h4peso);
+                let divdescripcion = document.createElement("div");
+                divdescripcion.className = "descripcion";
         
-                let h4nivel = document.createElement("h4");
-                h4nivel.innerHTML = "Nivel Kyu: "+response.values[i].nivel;
-                divdescripcion.append(h4nivel);
+                    let h3Nombre = document.createElement("h3");
+                    h3Nombre.innerHTML = "Nombre: "+response.values[i].nombre;
+                    divdescripcion.append(h3Nombre);
+
+                    let h3Apellidos = document.createElement("h3");
+                    h3Apellidos.innerHTML = "Apellidos: "+response.values[i].apellidos;
+                    divdescripcion.append(h3Apellidos);
+    
         
-                let h4categoria = document.createElement("h4");
-                h4categoria.innerHTML = "Categoria: "+response.values[i].categoria;
-                divdescripcion.append(h4categoria);
-                let categoria = response.values[i].categoria;
-                categoria = categoria.toLowerCase();
+                    let h4altura = document.createElement("h4");
+                    h4altura.innerHTML = "Altura: "+response.values[i].altura;
+                    divdescripcion.append(h4altura);
         
-                let h4federado = document.createElement("h4");
-                h4federado.innerHTML = "Federado: "+response.values[i].federado;
-                divdescripcion.append(h4federado);
+                    let h4peso = document.createElement("h4");
+                    h4peso.innerHTML = "Peso: "+response.values[i].peso;
+                    divdescripcion.append(h4peso);
         
-                let h4Entrenador = document.createElement("h4");
-                h4Entrenador.innerHTML = "Entrenador: "+response.values[i].entrenador;
-                divdescripcion.append(h4Entrenador);
-                // h4Entrenador.id="entrenadores";
-                // divdescripcion.append(h4Entrenador);
-                // BuscarElementos("entrenadores",response.values[i].entrenador)
+                    let h4nivel = document.createElement("h4");
+                    h4nivel.innerHTML = "Nivel Kyu: "+response.values[i].nivel;
+                    divdescripcion.append(h4nivel);
+        
+                    let h4categoria = document.createElement("h4");
+                    h4categoria.innerHTML = "Categoria: "+response.values[i].categoria;
+                    divdescripcion.append(h4categoria);
+                    let categoria = response.values[i].categoria;
+                    categoria = categoria.toLowerCase();
+        
+                    let h4federado = document.createElement("h4");
+                    h4federado.innerHTML = "Federado: "+response.values[i].federado;
+                    divdescripcion.append(h4federado);
+        
+                    let h4Entrenador = document.createElement("h4");
+                    h4Entrenador.innerHTML = "Entrenador: "+response.values[i].entrenador;
+                    divdescripcion.append(h4Entrenador);
+            
                         
-            divdeportista.append(divdescripcion);
+                divdeportista.append(divdescripcion);
         
-        document.getElementById(categoria).append(divdeportista); 
+            document.getElementById(categoria).append(divdeportista); 
+        }
     }
 }
 

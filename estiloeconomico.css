@@ -104,11 +104,45 @@ div.Datos{
     align-items: center;
     margin: 5px;
 }
+div.DatosBaja{
+    display: flex;
+    color: whitesmoke;
+    background-color: red;
+    flex-wrap:wrap;
+    align-items: center;
+    margin: 5px;
+
+}
 
 div.mensualidad{
     margin-left: 5px;
-    border: 2px solid red;
+    border: 2px solid white;
     margin-top: 10px;
+}
+
+div.mensualidadbaja{
+    margin-left: 5px;
+    border: 2px solid red;
+    background-color: red;
+    color: white;
+    margin-top: 10px;
+
+}
+
+div.mensualidad:hover{
+    box-shadow: 5px 5px 10px white;
+    color: white;
+
+}
+
+div.linea{
+    color:white;
+}
+
+div.mensualidadbaja:hover{
+    box-shadow: 5px 5px 10px white;
+    color: white;
+
 }
 
 .error{

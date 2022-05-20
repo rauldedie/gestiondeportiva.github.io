@@ -8,12 +8,24 @@ function BajaDeportista() {
     document.getElementById("ErrorUpdate").innerHTML = "";
     document.getElementById("MessageUpdate").innerHTML = "";
 
-    let tableName     = "deportista";
+    //let tableName     = "deportista";
+
+    const newRow = {};
+
+    newRow["estado"] = "baja"; 
     
-    const dataForSelect = {
+   /* const dataForSelect = {
         operation: "delete",
+        operation: "update"
         table: tableName,
         key: idsocio
+    };*/
+
+    const dataForSelect = {
+        operation: "update",
+        table: "deportista",
+        key: idsocio,
+        object: newRow
     };
 
     document.getElementById("ErrorUpdate").innerHTML = "Esperando resultado...";
@@ -31,6 +43,8 @@ function BajaDeportista() {
 /*Damos de baja tambien el usuario  y la clase si esta en alguna*/
 
 function BajaDeportistaTerminado(response) {
+
+
     document.getElementById("ErrorUpdate").innerHTML = response.error;
     document.getElementById("MessageUpdate").innerHTML = response.message;
     

@@ -68,6 +68,7 @@ function selectTerminado(response) {
 
 //Generamos el nombre del archivo imagen asociado, tendremos que crear el archivo de imagen
 //cuando demos un alta. El nombre del archivo sera: nombreapellido.jpeg
+
     let NombreImagen2 =  ValueNombre.toLowerCase() + ValueApellido.toLowerCase();          
     let NombreImagen  = NombreImagen2.split(" ").join("");
 
@@ -95,11 +96,11 @@ function selectTerminado(response) {
     let columnKyu  = "kyu";
     let ValueKyu  = document.getElementById("InsertKyu").value;
 
-    let columnUsuario  = "usuario";
-    let ValueUsuario  = document.getElementById("InsertUsuario").value;
+    // let columnUsuario  = "usuario";
+    // let ValueUsuario  = document.getElementById("InsertUsuario").value;
 
-    let columnPassword  = "password";
-    let ValuePassword  = document.getElementById("InsertPassword").value;
+    // let columnPassword  = "password";
+    // let ValuePassword  = document.getElementById("InsertPassword").value;
 
     let columnEntrenador  = "entrenador";
     let ValueEntrenador  = document.getElementById("InsertEntrenador").value;
@@ -167,13 +168,9 @@ function selectTerminado(response) {
         newRow[columnKyu] = ValueKyu;
     }
 
-    if (columnUsuario) {
-        newRow[columnUsuario] = ValueUsuario;
-    }
-
-    if (columnPassword) {
-        newRow[columnPassword] = ValuePassword;
-    }
+    newRow["usuario"] = ValueNombre+ValueApellido;
+    newRow["password"] = ValueNombre+ValueAnyo;
+    
 
     // if (columnClase) {
     //     newRow[columnClase] = ValueClase;
@@ -187,9 +184,8 @@ function selectTerminado(response) {
         newRow[columnFederado] = ValueFederado;
     }
 
-    if (columnTipousuario){
-        newRow[columnTipousuario] = ValueTipousuario;
-    }
+    newRow[columnTipousuario] = "deportista";
+    
 
     if (columnEstado){
         newRow[columnEstado] = ValueEstado;

@@ -1,71 +1,3 @@
-/*function Consultar_Mensualidades(){
-
-    // document.getElementById("ErrorUpdate").innerHTML = "";
-    // document.getElementById("MessageUpdate").innerHTML = "";
-
-    let tableName     = "mensualidades";
-    
-    const dataForSelect = {
-        operation: "select",
-        table: tableName,
-        
-    };
-
-    // document.getElementById("ErrorUpdate").innerHTML = "Esperando resultado...";
-    // document.getElementById("MessageUpdate").innerHTML = "Esperando resultado...";
-
-    GoogleSheetDataBaseOperation(
-        idGoogle,
-        dataForSelect,
-        ConsultarMensualidadesTerminado);
-}
-
-function ConsultarMensualidadesTerminado(respuesta){
-
-    /*Borro las mensualidades pagadas de meses anteriores
-    const fecha = new Date();
-    let anyo = fecha.getFullYear();
-    let mes = fecha.getMonth();
-
-    console.log(respuesta);
-
-    for (let i = 0; i < respuesta.values.length; i++){
-
-        if (respuesta.values[i].pagado == "si" && respuesta.values[i].mes != mes){
-
-            Borrar_Mensualidad(respuesta.vaues[id].idmensualidad);
-        }
-    }
-
-}
-
-Borrar_Mensualidad(mensualidad){
-
-    const dataForDelete ={
-        operation: "delete",
-        table: "mensualidades",
-        key: mensualidad
-    };
-
-    GoogleSheetDataBaseOperation(
-        idGoogle,
-        dataForSelect,
-        DeleteTerminado);
-
-}
-
-function DeleteFinished(response) {
-    document.getElementById("ErrorUpdate").innerHTML = response.error;
-    document.getElementById("MessageUpdate").innerHTML = response.message;
-    BajaUsuario(idsocio);
-    BajaClase(idsocio);
-}*/
-
-
-
-/*Creo la mensualidad del mes en curso para las socios*/
-/*TENGO QUE CONTROLAR QUE NO REPITA MENSUALIDADES*/
-
 
 function Ver_Repeticiones(){
 
@@ -189,10 +121,14 @@ function Dar_Alta_Elto_i2(){
     newRow["pagado"] = "no"; 
 
     if (iAlta < mAlta) {
-        const dataForInsert = {
-            operation: "insert",
-            table: "mensualidades",
-            object: newRow
+
+        if (valuesAlta[iAlta].estado = "alta")
+        {
+            const dataForInsert = {
+                operation: "insert",
+                table: "mensualidades",
+                object: newRow
+            }
         }
 
         GoogleSheetDataBaseOperation(
@@ -259,14 +195,26 @@ function consultarDeportistaTerminado(response) {
 }
 
 function consultarMensualidadesTerminado(response) {
-    // <div class="juegos"></div>
+    
     let divdeportista = document.createElement("div");
     divdeportista.className = "Datos";
 
         for (let i = 0; i < response.values.length; i++) {
+
+            //definimos si el deportista est en esta de baja
+            //si es asi las mensualidades salen conun color de fondo diferente
+
+            // if (deportistas[response.values[i].idsocio].estado == "baja"){
+            //     divdeportista.className = "DatosBaja";
+            // }
+
             // Datos deportista
             let divdatosdeportista = document.createElement("div");
+            if (deportistas[response.values[i].idsocio].estado == "baja"){
+                divdatosdeportista.className = "mensualidadbaja";
+            }else {
             divdatosdeportista.className = "mensualidad";
+            }
 
             let h3nombre = document.createElement("h3");
             h3nombre.innerHTML = "Nombre: " + deportistas[response.values[i].idsocio].nombre;
@@ -327,8 +275,11 @@ function clickSobreMensualidad(idmensualidad) {
 
 function clickSobreMensualidadTerminado(){
 
-    document.getElementById("ErrorOp").innerHTML = response.error;
-    document.getElementById("MessageOp").innerHTML = response.message;
+    // document.getElementById("ErrorOp").innerHTML = response.error;
+    // document.getElementById("MessageOp").innerHTML = response.message;
+    document.getElementById("mensualidad").innerHTML=" ";
+    consultarDeportista();
+    
 }
 
 consultarDeportista();
