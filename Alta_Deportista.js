@@ -108,8 +108,8 @@ function selectTerminado(response) {
     // let columnClase = "idclase";
     // let ValueClase = document.getElementById("InsertClase").value;
 
-    let columnTipousuario = "tipousuario";
-    let ValueTipousuario = document.getElementById("InsertTipousuario").value;
+    // let columnTipousuario = "tipousuario";
+    // let ValueTipousuario = document.getElementById("InsertTipousuario").value;
 
     let columnEstado = "estado";
     let ValueEstado = "alta";
@@ -184,7 +184,7 @@ function selectTerminado(response) {
         newRow[columnFederado] = ValueFederado;
     }
 
-    newRow[columnTipousuario] = "deportista";
+    newRow["tipousuario"] = "deportista";
     
 
     if (columnEstado){
